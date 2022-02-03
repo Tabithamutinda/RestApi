@@ -1,3 +1,3 @@
 # RestApi
 
-Aims at practicing the http requests there are.
+Aims at practicing the http requests available.
