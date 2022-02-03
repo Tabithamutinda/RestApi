@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               InkWell(
-                                  onTap: () {
+                                  onTap: () async {
                                     todoController
                                         .updatePatchCompleted(todo!)
                                         .then((value) {
@@ -55,10 +55,10 @@ class HomePage extends StatelessWidget {
                                           .showSnackBar(
                                         SnackBar(
                                           backgroundColor: Colors.black,
-                                            duration: const Duration(
-                                                milliseconds: 500),
-                                            content: Text('$value')
-                                            ),
+                                          duration:
+                                              const Duration(milliseconds: 5000),
+                                          content: Text(value),
+                                        ),
                                       );
                                     });
                                   },

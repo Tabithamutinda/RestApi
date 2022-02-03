@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutterapi/Models/todo.dart';
 import 'package:flutterapi/Repository/repository.dart';
 import 'package:http/http.dart' as http;
@@ -35,18 +36,16 @@ class TodoRepository implements Repository {
   Future<String> patchCompleted(Todo todo) async {
     // TODO: implement patchCompleted
     var url = Uri.parse('$dataURL/todos/${todo.id}');
-    //call back data
+    // //call back data
     String resData = '';
-
-    //bool? ->String
+    // //bool? ->String
     await http.patch(
       url,
-      body: {'completed': (!todo.completed!).toString()},
-      headers: {'Authorization': 'Your_token'},
+      body: {'title': 'KIMESPOIL'},
+      // headers: {'Authorization': 'Your_token'},
     ).then((response) {
       //homescreen-> data
-      Map<String, dynamic> result = json.decode(response.body);
-      return resData = result[''];
+      resData = response.body;
     });
     return resData;
   }
