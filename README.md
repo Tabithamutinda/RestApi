@@ -1,3 +1,3 @@
 # RestApi
 
-Aims at practicing the http requests available.
+Implementation of https requests.
