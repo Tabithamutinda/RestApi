@@ -9,9 +9,14 @@ class TodoRepository implements Repository {
 
   String dataURL = 'https://jsonplaceholder.typicode.com';
   @override
-  Future<String> deleteTodo(Todo todo) {
+  Future<String> deleteTodo(Todo todo) async {
     // TODO: implement deleteTodo
-    throw UnimplementedError();
+    var url = Uri.parse('$dataURL/todos/${todo.id}');
+    var result = 'false';
+    await http.delete(url).then((value) {
+      return result = 'true';
+    });
+    return result;
   }
 
   @override
@@ -51,14 +56,31 @@ class TodoRepository implements Repository {
   }
 
   @override
-  Future<String> postTodo(Todo todo) {
+  Future<String> postTodo(Todo todo) async {
     // TODO: implement postTodo
-    throw UnimplementedError();
+    var url = Uri.parse('$dataURL/todos/');
+    var response = await http.post(url, body: todo.toJson());
+  
+    print(response.body);
+    return 'true';
   }
 
   @override
-  Future<String> putCompleted(Todo todo) {
+  Future<String> putCompleted(Todo todo) async {
     // TODO: implement putCompleted
-    throw UnimplementedError();
+    var url = Uri.parse('$dataURL/todos/${todo.id}');
+    // //call back data
+    String resData = '';
+    // //bool? ->String
+    await http.put(
+      url,
+      body: {'title': 'KIMESPOIL'},
+      // headers: {'Authorization': 'Your_token'},
+    ).then((response) {
+      //homescreen-> data
+      resData = response.body;
+      print(resData);
+    });
+    return resData;
   }
 }

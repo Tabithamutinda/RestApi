@@ -15,10 +15,10 @@ class Todo {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['userId'] = this.userId;
-    data['id'] = this.id;
+    data['userId'] = this.userId.toString();
+    data['id'] = this.id.toString();
     data['title'] = this.title;
-    data['completed'] = this.completed;
+    data['completed'] = this.completed.toString();
     return data;
   }
 }
